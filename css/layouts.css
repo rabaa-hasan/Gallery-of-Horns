@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+h1{
+    font-size: 32px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Satisfy', cursive;
+}
+select{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'Indie Flower', cursive; 
+  font-size: 17px;
+}
+
+div {
+    float: left;
+    height: 420px;
+    margin: 2em;
+    width: 270px;
+    border: 1px solid rgb(197, 194, 194);
+    box-shadow:10px 10px 10px 0 grey;
+}
+
+h2{
+    font-size: 25px;
+    text-align: center;
+    padding: 15px;
+    font-family: 'Indie Flower', cursive; 
+}
+img {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: 55%;
+
+}
+p{
+    padding: 10px;
+    padding-left: 30px;
+    font-size: 20px;
+    font-family: 'Indie Flower', cursive; 
+    /* font-family: 'Bad Script', cursive; */
+    
+}
+footer{
+    text-align: center;
+    font-size: 15px;
+    margin: 30px;
+}
