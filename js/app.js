@@ -6,6 +6,7 @@ $.ajax( '../data/page-1.json' )
       let newHorns=new Horns( value );
       newHorns.render();
     } );
+    populateSelectBox();
     $( '#photo-template' ).first().remove();
   } );
 
@@ -24,8 +25,7 @@ function Horns( data ){
 Horns.all=[];
 
 Horns.prototype.render = function() {
-  let option=$( '<option></option>' ).text( this.keyword );
-  $( 'select' ).append( option );
+ 
 
 
   let dataClone=$( '#photo-template' ).clone();
@@ -58,16 +58,7 @@ $( 'select' ).on( 'change', function() {
   $( `.${selected}` ).fadeIn( 800 );
 } );
 
-populateSelectBox();
 
 
-// $( 'option' ).click( function () {
-//   data.forEach( value => {
-//     if( this.keyword === 'narwhal' )
-//       $( this ).toggleClass( 'narwhal' );
 
-//     let newHorns=new Horns( value );
-//     newHorns.render( '.narwhal' );
-//   } );
-// } );
 

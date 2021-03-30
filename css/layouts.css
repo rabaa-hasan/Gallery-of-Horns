@@ -46,11 +46,13 @@ p{
     padding-left: 30px;
     font-size: 20px;
     font-family: 'Indie Flower', cursive; 
-    /* font-family: 'Bad Script', cursive; */
     
 }
 footer{
+    clear: both;
     text-align: center;
-    font-size: 15px;
+    font-size: 20px;
     margin: 30px;
+    font-family: 'Satisfy', cursive;
+
 }
