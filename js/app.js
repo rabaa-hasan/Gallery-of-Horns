@@ -1,14 +1,35 @@
 'use strict';
-$.ajax( '../data/page-1.json' )
+let allHorn1=[];
+let allHorn2=[];
+
+$.ajax( './data/page-1.json' )
   .then ( data=>{
     console.log( data );
     data.forEach( value => {
       let newHorns=new Horns( value );
-      newHorns.render();
+      allHorn1.push(newHorns);
+      let renderHorn=newHorns.render();
+      $('main').append(renderHorn);
     } );
-    $( '#photo-template' ).first().remove();
+   
   } );
 
+
+  $.ajax( './data/page-2.json' )
+  .then ( data=>{
+    console.log( data );
+    data.forEach( value => {
+      let newHorns=new Horns( value );
+      allHorn2.push(newHorns);
+      let renderHorn=newHorns.render2();
+      $('main').append(renderHorn);
+    });
+    page1Render();
+  } );
+
+$('.page1').on('click',page1Render)
+$('.page2').on('click', page2Render)
+console.log('.page1')
 
 
 function Horns( data ){
@@ -24,17 +45,20 @@ function Horns( data ){
 Horns.all=[];
 
 Horns.prototype.render = function() {
-  let option=$( '<option></option>' ).text( this.keyword );
-  $( 'select' ).append( option );
+  
+  let dataClone = $('#hornTemplate1').html();
+  let dataSet = Mustache.render(dataClone,this);
+  console.log(this);
+  return dataSet;
 
-
-  let dataClone=$( '#photo-template' ).clone();
-  dataClone.addClass( this.keyword );
-
-  dataClone.find( 'h2' ).text( this.title );
-  dataClone.find( 'img' ).attr( 'src', this.image_url );
-  dataClone.find( 'p' ).text( this.description );
-  $( 'main' ).append( dataClone );
+  
+  
+};
+Horns.prototype.render2 = function() {
+  
+  let dataClone = $('#hornTemplate2').html();
+  let dataSet = Mustache.render(dataClone,this);
+  return dataSet;
 };
 
 
@@ -49,7 +73,6 @@ function populateSelectBox() {
     }
   } );
 
-  console.log( seen );
 }
 
 $( 'select' ).on( 'change', function() {
@@ -58,16 +81,16 @@ $( 'select' ).on( 'change', function() {
   $( `.${selected}` ).fadeIn( 800 );
 } );
 
-populateSelectBox();
 
+function page1Render() {
+  $('div').hide();
+  $('.photo-template1').fadeIn(800);
+  populateSelectBox(allHorn1);
+}
+function page2Render() {
+  $('div').hide();
+  $('.photo-template2').fadeIn(800);
+  populateSelectBox(allHorn2);
+}
 
-// $( 'option' ).click( function () {
-//   data.forEach( value => {
-//     if( this.keyword === 'narwhal' )
-//       $( this ).toggleClass( 'narwhal' );
-
-//     let newHorns=new Horns( value );
-//     newHorns.render( '.narwhal' );
-//   } );
-// } );
 
